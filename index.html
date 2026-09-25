@@ -126,8 +126,8 @@ td.pick { font-weight: 700; color: var(--accent); }
     <summary>Settings</summary>
     <div class="row">
       <label for="thr">Filled-bubble darkness</label>
-      <input type="range" id="thr" min="0.15" max="0.70" step="0.01" value="0.35">
-      <span id="thrVal">0.35</span>
+      <input type="range" id="thr" min="0.15" max="0.70" step="0.01" value="0.27">
+      <span id="thrVal">0.27</span>
     </div>
     <p class="note">A bubble counts as filled when it is at least this dark (0 = white paper, 1 = black). Slightly lighter marks are flagged as “faint”. Changing this re-reads existing captures.</p>
     <div class="row">
@@ -560,7 +560,7 @@ function quality(g, W, H, det, fullScale) {
    ============================================================ */
 const $ = id => document.getElementById(id);
 const view = $("view"), vctx = view.getContext("2d", { willReadFrequently: true }), video = $("video");
-const state = { running: false, stream: null, armed: true, lost: 0, hist: [], lastCap: 0, capPts: null, captures: [], flashUntil: 0, thr: 0.35 };
+const state = { running: false, stream: null, armed: true, lost: 0, hist: [], lastCap: 0, capPts: null, captures: [], flashUntil: 0, thr: 0.27 };
 const DET_LONG = 800;
 
 if (!window.isSecureContext) $("secureWarn").hidden = false;
