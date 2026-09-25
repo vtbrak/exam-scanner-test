@@ -463,7 +463,9 @@ function classify(darks, thr, labels) {
     return { value: null, picks: [], flag: null };
   }
   if (filled.length === 1) return { value: labels[filled[0][1]], picks: [filled[0][1]], flag: null };
-  if (filled[0][0] >= filled[1][0] * 1.5) return { value: labels[filled[0][1]], picks: [filled[0][1]], flag: null, erasure: true };
+  // Erasure residue usually stays below the threshold. When two marks are both above it, only pick the
+  // darker one if it is at least twice as dark; otherwise it is a real double mark (flag for review).
+  if (filled[0][0] >= filled[1][0] * 2) return { value: labels[filled[0][1]], picks: [filled[0][1]], flag: null, erasure: true };
   return { value: filled.map(f => labels[f[1]]).sort().join(""), picks: filled.map(f => f[1]), flag: "multiple" };
 }
 function readDarkness(g, W, H, map) {
